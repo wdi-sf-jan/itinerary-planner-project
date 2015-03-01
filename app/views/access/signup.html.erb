@@ -1,12 +1,12 @@
 <h1>Create an account</h1>
 
-<%= form_tag signup_path do %>
-  <%= text_field :user, :username, placeholder: :username, required: true%>
-  <%= password_field :user, :password, placeholder: :password, required: true%>
+<%= form_tag signup_path, class: "vertical" do %>
+  <%= text_field :user, :username, placeholder: :username, required: true, autofocus: true%>
+  <%= password_field :user, :password, placeholder: :password, required: true %>
+  <%= text_field :user, :first_name, placeholder: :first_name, required: true %>
+  <%= text_field :user, :last_name, placeholder: :last_name, required: true %>
+  <%= email_field :user, :email, placeholder: :email, required: true %>
   <%= submit_tag "Sign up" %>
 <% end %>
 
 <p>Already have an account? <%= link_to "Log in here", login_path %></p>
-
-
-
