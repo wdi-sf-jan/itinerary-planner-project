@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :users_waypoints
   has_many :waypoints, through: :users
+
+  has_secure_password
 end
