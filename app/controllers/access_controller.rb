@@ -1,22 +1,20 @@
 class AccessController < ApplicationController
 
   def home
-    if is_logged_in
-      @user = User.find_by_id(user_id)
-    end
+    @user = current_user
     unless @user
       redirect_to :login
     end
   end
 
   def signup
-    if is_logged_in
+    if current_user
       redirect_to root_path
     end
   end
 
   def login
-    if is_logged_in
+    if current_user
       redirect_to root_path
     end
   end
@@ -68,5 +66,11 @@ class AccessController < ApplicationController
 
   def is_logged_in
      user_id != nil
+  end
+
+  def current_user
+    if is_logged_in
+      user = User.find_by_id(user_id)
+    end
   end
 end
