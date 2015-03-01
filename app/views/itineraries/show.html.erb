@@ -1,0 +1,33 @@
+<h1><%= @itinerary.name %></h1>
+
+<h2>Who's invited</h2>
+<ul>
+  <% @itinerary.guests.each do |guest| %>
+    <li>
+      <%= guest.full_name %>
+      <% if @admin %>
+        <%= button_to "X", remove_guest_path(@itinerary, guest), :method => :delete %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if @admin and not @invitable.empty? %>
+    <%= form_tag add_guest_path(@itinerary) do %>
+      <%= select_tag "guest_id", options_from_collection_for_select(@invitable, :id, :full_name) %>
+      <%= submit_tag "Add guest" %>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Where we're going</h2>
+<ul>
+  <% @itinerary.waypoints.order(:date).each do |waypoint| %>
+    <li><%= waypoint.name %>
+      <p>When: <%= waypoint.date.to_date.to_formatted_s(:long) %></p>
+      <p>Who: <%= waypoint.users.map(&:full_name).join(", ") %></p>
+    </li>
+  <% end %>
+</ul>
+
+<% if @admin %>
+  <%= button_to "Delete", @itinerary, :method => :delete %>
+<% end %>

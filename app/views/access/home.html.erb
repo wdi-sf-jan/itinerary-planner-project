@@ -2,4 +2,14 @@
 
 <p>Welcome home, <%= @user.first_name %>.</p>
 
+<h2>Itineraries</h2>
+<ul>
+  <% @user.invitations.each do |trip| %>
+  <li><%= link_to trip.name, trip %>
+    <p>Invited: <%= trip.guests.map(&:full_name).join(", ") %></p>
+  </li>
+  <% end %>
+</ul>
+<p><%= link_to "Create itinerary", new_itinerary_path %></p>
+
 <%= link_to "Logout", logout_path, :method => :delete %>

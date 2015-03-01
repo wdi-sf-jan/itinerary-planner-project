@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   post '/signup' => 'access#create'
 
   delete '/logout' => 'access#logout', as: 'logout'
+
+  # itinerary routes
+  resources :itineraries
+  post '/itinerary/:id/guests' => 'itineraries#add_guest', as: 'add_guest'
+  delete '/itinerary/:id/guests/:guest_id' => 'itineraries#remove_guest', as: 'remove_guest'
 end

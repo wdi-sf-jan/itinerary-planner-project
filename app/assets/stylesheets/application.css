@@ -23,3 +23,7 @@
 .alert.alert-success {
     color: green;
 }
+
+form.button_to {
+    display: inline-block;
+}
