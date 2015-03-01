@@ -1,0 +1,12 @@
+<h1>Create an account</h1>
+
+<%= form_tag signup_path do %>
+  <%= text_field :user, :username, placeholder: :username, required: true%>
+  <%= password_field :user, :password, placeholder: :password, required: true%>
+  <%= submit_tag "Sign up" %>
+<% end %>
+
+<p>Already have an account? <%= link_to "Log in here", login_path %></p>
+
+
+
