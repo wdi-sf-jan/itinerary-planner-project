@@ -28,7 +28,9 @@
   <% end %>
 </ul>
 
-<p><%= link_to "Add a waypoint", new_itinerary_waypoint_path(@itinerary) %><p>
+<p><%= link_to "Add a waypoint", new_itinerary_waypoint_path(@itinerary) %></p>
+
+<%= render partial: "reviews/index", locals: {reviewable: @itinerary} %>
 
 <% if @admin %>
   <%= button_to "Delete", @itinerary, :method => :delete %>

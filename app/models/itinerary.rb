@@ -5,4 +5,6 @@ class Itinerary < ActiveRecord::Base
   has_many :guests, through: :itineraries_users, source: :user
 
   has_many :waypoints, dependent: :destroy
+
+  has_many :reviews, as: :reviewable
 end

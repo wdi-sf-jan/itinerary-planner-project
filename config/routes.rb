@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
   # itineraries and waypoints
   resources :itineraries do
-    resources :waypoints
+    resources :waypoints do
+      post '/reviews' => 'reviews#create', as: 'reviews'
+    end
+    post '/reviews' => 'reviews#create', as: 'reviews'
   end
 
   post '/itineraries/:id/guests' => 'itineraries#add_guest', as: 'add_guest'

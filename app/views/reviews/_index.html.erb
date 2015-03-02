@@ -1,0 +1,17 @@
+<h2>Reviews</h2>
+
+
+<ul>
+  <% reviewable.reviews.order(:created_at).each do |note| %>
+  <li>
+    <p><%= note.content %></p>
+    <p>By: <%= note.user.full_name %></p>
+  </li>
+  <% end %>
+</ul>
+
+<% if reviewable.reviews.empty? %>
+<p>No reviews</p>
+<% end %>
+
+<%= render partial: "reviews/new", locals: {reviewable: reviewable} %>

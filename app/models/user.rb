@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :users_waypoints, dependent: :destroy
   has_many :waypoints, through: :users
 
+  has_many :reviews, as: :reviewable
+
   has_secure_password
 
   validates :username, presence: true, uniqueness: true
