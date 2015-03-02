@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :invitations, through: :itineraries_users, source: :itinerary
 
   has_many :users_waypoints, dependent: :destroy
-  has_many :waypoints, through: :users
+  has_many :waypoints, through: :users_waypoints
 
   has_many :reviews, as: :reviewable
 
