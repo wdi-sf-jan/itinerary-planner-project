@@ -1,3 +1,4 @@
+Review.destroy_all
 Waypoint.destroy_all
 Itinerary.destroy_all
 User.destroy_all
@@ -49,6 +50,15 @@ tokyo = Waypoint.create(name: "Tokyo, Japan",
                         location: "{}",
                         date: "2015-4-5 00:00:00")
 
+itinerary_review = Review.create(content: "Eurotrip is the best itinerary.")
+itinerary_review.user = tim
+itinerary_review.reviewable = eurotrip
+itinerary_review.save
+
+waypoint_review = Review.create(content: "Tokyo is the best waypoint.")
+waypoint_review.user = myla
+waypoint_review.reviewable = tokyo
+waypoint_review.save
 
 eurotrip.user = tim
 eurotrip.guests << tim
