@@ -14,4 +14,8 @@
 <p>No reviews</p>
 <% end %>
 
-<%= render partial: "reviews/new", locals: {reviewable: reviewable} %>
+<% if nested %>
+  <%= render partial: "reviews/new_nested", locals: {reviewable: reviewable, nested: nested} %>
+<% else %>
+  <%= render partial: "reviews/new", locals: {reviewable: reviewable} %>
+<% end %>

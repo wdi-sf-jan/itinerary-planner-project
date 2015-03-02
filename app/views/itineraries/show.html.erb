@@ -30,7 +30,7 @@
 
 <p><%= link_to "Add a waypoint", new_itinerary_waypoint_path(@itinerary) %></p>
 
-<%= render partial: "reviews/index", locals: {reviewable: @itinerary} %>
+<%= render partial: "reviews/index", locals: {reviewable: @itinerary, nested: nil} %>
 
 <% if @admin %>
   <%= button_to "Delete", @itinerary, :method => :delete %>

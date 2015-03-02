@@ -1,0 +1,4 @@
+<%= form_for [nested, reviewable, Review.new] do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
