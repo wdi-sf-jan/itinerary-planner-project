@@ -11,8 +11,13 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'access#logout', as: 'logout'
 
-  # itinerary routes
-  resources :itineraries
-  post '/itinerary/:id/guests' => 'itineraries#add_guest', as: 'add_guest'
-  delete '/itinerary/:id/guests/:guest_id' => 'itineraries#remove_guest', as: 'remove_guest'
+  # itineraries and waypoints
+  resources :itineraries do
+    resources :waypoints
+  end
+
+  post '/itineraries/:id/guests' => 'itineraries#add_guest', as: 'add_guest'
+  delete '/itineraries/:id/guests/:guest_id' => 'itineraries#remove_guest', as: 'remove_guest'
+  post '/itineraries/:itinerary_id/waypoints/:id/travelers' => 'waypoints#add_traveler', as: 'add_traveler'
+  delete '/itineraries/:itinerary_id/waypoints/:id/travelers/:traveler_id' => 'waypoints#remove_traveler', as: 'remove_traveler'
 end

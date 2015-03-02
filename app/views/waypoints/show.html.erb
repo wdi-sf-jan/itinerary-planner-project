@@ -1,0 +1,24 @@
+<h1><%= @waypoint.name %></h1>
+
+<p><%= @waypoint.pretty_print %></p>
+
+<h2>Travelers</h2>
+<ul>
+  <% @waypoint.users.each do |traveler| %>
+    <li>
+      <%= traveler.full_name %>
+      <% if @user == traveler %>
+        <%= button_to "X", remove_traveler_path(@itinerary, @waypoint, @user), :method => :delete %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% unless @is_traveling %>
+  <%= form_tag add_traveler_path(@itinerary, @waypoint) do %>
+    <%= hidden_field_tag :traveler_id, @user.id %>
+    <%= submit_tag "Sign me up!" %>
+  <% end %>
+<% end %>
+
+<p><%= link_to "Edit", edit_itinerary_waypoint_path(@itinerary, @waypoint) %></p>

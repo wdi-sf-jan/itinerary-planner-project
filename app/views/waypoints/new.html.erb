@@ -1,0 +1,7 @@
+<h1>Add a Waypoint</h1>
+
+<%= form_for [@itinerary, Waypoint.new] do |f| %>
+  <%= f.text_field :name, placeholder: :name, autofocus: true, required: true %>
+  <%= f.date_field :date %>
+  <%= f.submit %>
+<% end %>

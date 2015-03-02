@@ -21,12 +21,14 @@
 <h2>Where we're going</h2>
 <ul>
   <% @itinerary.waypoints.order(:date).each do |waypoint| %>
-    <li><%= waypoint.name %>
-      <p>When: <%= waypoint.date.to_date.to_formatted_s(:long) %></p>
+    <li><%= link_to waypoint.name, [@itinerary, waypoint] %>
+      <p>When: <%= waypoint.pretty_print %></p>
       <p>Who: <%= waypoint.users.map(&:full_name).join(", ") %></p>
     </li>
   <% end %>
 </ul>
+
+<p><%= link_to "Add a waypoint", new_itinerary_waypoint_path(@itinerary) %><p>
 
 <% if @admin %>
   <%= button_to "Delete", @itinerary, :method => :delete %>
