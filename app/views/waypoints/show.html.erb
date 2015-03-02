@@ -23,4 +23,7 @@
 
 <%= render partial: "reviews/index", locals: {reviewable: @waypoint, nested: @itinerary} %>
 
-<p><%= link_to "Edit", edit_itinerary_waypoint_path(@itinerary, @waypoint) %></p>
+<p>
+  <%= link_to "Edit", edit_itinerary_waypoint_path(@itinerary, @waypoint) %>
+  <%= link_to "Home", root_path %>
+</p>
