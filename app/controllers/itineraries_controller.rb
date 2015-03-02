@@ -57,6 +57,11 @@ class ItinerariesController < ApplicationController
       guest = User.find_by_id(params[:guest_id])
       if guest
         itinerary.guests.delete(guest)
+        itinerary.waypoints.each do |dest|
+          if dest.users.include? guest
+            dest.users.delete guest
+          end
+        end
       end
     end
     redirect_to itinerary
